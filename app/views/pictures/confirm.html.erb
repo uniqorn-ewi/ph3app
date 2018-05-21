@@ -1,0 +1,19 @@
+<h3>以下の内容で、投稿する。</h3>
+
+<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+  <%= form.hidden_field :comment %>
+  <%= form.hidden_field :user_id %>
+  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+  <p>本文:<%= @picture.comment %></p>
+  <p>画像:</p>
+  <!-- 確認画面でアップロードした画像を表示させるための記述 -->
+  <p><%= image_tag(@picture.image.url) if @picture.image.url %></p>
+  <%= form.submit "投稿する", class: 'commit-btn' %>
+<% end %>
+
+<%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :comment %>
+  <%= form.hidden_field :user_id %>
+  <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
+  <%= form.submit "もどる", name: 'back', class: 'back-btn' %>
+<% end %>

@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ph3app</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Ph3app</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <header>
+    <ul>
+      <li><%= link_to "トップページ", '/' %></li>
+<% if logged_in? %>
+      <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+      <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+<% else %>
+      <li><%= link_to "サインアップ", new_user_path %></li>
+      <li><%= link_to "ログイン", new_session_path %></li>
+<% end %>
+      <li><%= link_to "ブログ一覧", pictures_path %></li>
+      <li><%= link_to '新規ブログを作成する', new_picture_path %></li>
+    </ul>
+  </header>
+<%= yield %>
+  <footer>
+    <p>Dive into Code test application</p>
+  </footer>
+</body>
 </html>

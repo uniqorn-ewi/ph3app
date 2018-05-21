@@ -1,0 +1,38 @@
+<h1>ブログ一覧</h1>
+<p class="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <% @pictures.each do |picture| %>
+      <div class="col-xs-12 col-md-6 picture-panel">
+
+        <p><%= picture.comment %></p>
+        <% if picture.image.thumb.url %>
+          <p><%= image_tag(picture.image.thumb.url) %></p>
+        <% end %>
+
+        <div class="clearfix">
+          <div class="avator">
+            <% if picture.user.avatar.thumb.url %>
+              <%= image_tag(picture.user.avatar.thumb.url) %>
+            <% else %>
+              <%= image_tag("/assets/no_image.png") %>
+            <% end %>
+          </div>
+          <div class="info">投稿者: <%= picture.user.name %>
+            <div><%= picture.created_at %></div>
+            <div class="picture-links">
+              <%= link_to '確認', picture_path(picture.id), class: 'btn-default' %>
+              <% if logged_in? && picture.user_id == current_user.id %>
+                <%= link_to '編集', edit_picture_path(picture.id), class: 'btn-info' %> |
+                <%= link_to '削除', picture_path(picture.id), method: :delete, \
+                    data: {confirm: '削除しますか？'},  class: 'btn-danger' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+</div>
