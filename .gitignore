@@ -13,6 +13,13 @@
 !/log/.keep
 !/tmp/.keep
 
+/public/uploads/picture/image/*
+/public/uploads/user/avatar/*
+/public/uploads/tmp/*
+!/public/uploads/picture/image/.keep
+!/public/uploads/user/avatar/.keep
+!/public/uploads/tmp/.keep
+
 /node_modules
 /yarn-error.log
 
