@@ -7,34 +7,8 @@
   <p><%= image_tag("/assets/no_image.png") %></p>
 <% end %>
 
-<div class="container">
-  <div class="row">
-    <% @favorite_pictures.each do |picture| %>
-      <div class="col-xs-12 col-md-6 picture-panel">
-
-        <p><%= picture.comment %></p>
-        <% if picture.image.url %>
-          <p><%= image_tag(picture.image.url) %></p>
-        <% end %>
-
-        <div class="clearfix">
-          <div class="avator">
-            <% if picture.user.avatar.thumb.url != nil %>
-              <%= image_tag(picture.user.avatar.thumb.url) %>
-            <% else %>
-              <%= image_tag("/assets/no_image.png") %>
-            <% end %>
-          </div>
-          <div class="info">投稿者: <%= picture.user.name %>
-            <div><%= picture.created_at %></div>
-            <div class="picture-links">
-              <%= link_to "お気に入り解除する", favorite_path(picture_id: picture.id), \
-                  method: :delete, class: 'btn-danger' %>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    <% end %>
-  </div>
+<div class="picture-links">
+  <%= link_to "お気に入りのpictureの一覧", \
+      user_favorite_pictures_path(user_id: @user.id), \
+      class: 'btn-default' %>
 </div>

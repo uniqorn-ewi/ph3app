@@ -9,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :users
+  resources :users do
+    resources :favorite_pictures, only: [:index]
+  end
 
   resources :favorites, only: [:create, :destroy]
 
