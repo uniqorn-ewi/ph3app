@@ -1,38 +1,64 @@
-<h1>ブログ一覧</h1>
-<p class="notice"><%= notice %></p>
+<header class="_mainc ">
+  <section class="_o6mpc">
+    <span class="_ienqf">
+      <h1 class="_rf3jb notranslate">投稿一覧</h1>
+    </span>
+    <span class="notice"><%= notice %></span>
+  </section>
+</header>
 
-<div class="container">
-  <div class="row">
-    <% @pictures.each do |picture| %>
-      <div class="col-xs-12 col-md-6 picture-panel">
+<article>
+  <div>
+    <section class="bg-light" id="portfolio">
+      <span class="container">
+        <span class="row">
 
-        <p><%= picture.comment %></p>
-        <% if picture.image.thumb.url %>
-          <p><%= image_tag(picture.image.thumb.url) %></p>
-        <% end %>
-
-        <div class="clearfix">
-          <div class="avator">
-            <% if picture.user.avatar.thumb.url %>
-              <%= image_tag(picture.user.avatar.thumb.url) %>
-            <% else %>
-              <%= image_tag("/assets/no_image.png") %>
-            <% end %>
-          </div>
-          <div class="info">投稿者: <%= picture.user.name %>
-            <div><%= picture.created_at %></div>
-            <div class="picture-links">
-              <%= link_to '確認', picture_path(picture.id), class: 'btn-default' %>
-              <% if logged_in? && picture.user_id == current_user.id %>
-                <%= link_to '編集', edit_picture_path(picture.id), class: 'btn-info' %> |
-                <%= link_to '削除', picture_path(picture.id), method: :delete, \
-                    data: {confirm: '削除しますか？'},  class: 'btn-danger' %>
+<!-- loop for Portfolio -->
+<% @pictures.each do |picture| %>
+          <div class="col-md-4 col-sm-6 portfolio-item">
+            <a class="portfolio-link" href="<%= picture_path(picture.id) %>">
+                
+              <div class="portfolio-hover">
+                <div class="portfolio-hover-content">
+                  <i class="fa fa-plus fa-3x"></i>
+                </div>
+              </div>
+              <% if picture.image.thumb.url %>
+              <%= image_tag(picture.image.thumb.url, class: "img-fluid", alt: "") %>
+              <% else %>
+              <%= image_tag("/assets/no_image.png",  class: "img-fluid", alt: "") %>
               <% end %>
+            </a>
+            <div class="portfolio-caption">
+              <p class="text-muted"><%= picture.comment %></p>
+              <ul class="list-inline">
+                <li><%= picture.created_at %></li>
+                <li>投稿者: <%= picture.user.name %></li>
+              </ul>
+              <div>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <%= link_to '確認', picture_path(picture.id), class: 'btn-default nav-link' %>
+                  </li>
+                <% if logged_in? && picture.user_id == current_user.id %>
+                  <li class="nav-item">
+                    <%= link_to '編集', edit_picture_path(picture.id), class: 'btn-info nav-link' %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to '削除', picture_path(picture.id), method: :delete, \
+                        data: {confirm: '削除しますか？'}, class: 'btn-danger nav-link' %>
+                  </li>
+                <% end %>
+                </ul>
+              </div>
+
             </div>
           </div>
-        </div>
+<% end %>
+<!-- loop for Portfolio -->
 
-      </div>
-    <% end %>
+        </span>
+      </span>
+    </section>
   </div>
-</div>
+</article>

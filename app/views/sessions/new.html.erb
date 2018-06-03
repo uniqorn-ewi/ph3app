@@ -1,4 +1,12 @@
-<h1>ログイン</h1>
+<header class="_mainc ">
+  <section class="_o6mpc">
+    <div class="_tb97a">
+    </div>
+  </section>
+</header>
+
+<article>
+  <div>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
@@ -12,3 +20,6 @@
 
   <%= f.submit "ログイン" %>
 <% end %>
+  </div>
+</article>
+

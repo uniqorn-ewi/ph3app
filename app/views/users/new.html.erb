@@ -1,4 +1,13 @@
-<h1>サインアップ</h1>
+<header class="_mainc ">
+  <section class="_o6mpc">
+    <div class="_tb97a">
+    </div>
+  </section>
+</header>
+
+<article>
+  <div>
+
 <%= form_with(model: @user, local: true) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -57,3 +66,6 @@
   
   <%= f.submit "アカウント作成" %>
 <% end %>
+
+  </div>
+</article>

@@ -1,5 +1,13 @@
-<h3>以下の内容で、投稿する。</h3>
+<header class="_mainc ">
+  <section class="_o6mpc">
+    <div class="_tb97a">
+<h3>以下の内容で投稿</h3>
+    </div>
+  </section>
+</header>
 
+<article>
+  <div>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= form.hidden_field :comment %>
   <%= form.hidden_field :user_id %>
@@ -17,3 +25,5 @@
   <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
   <%= form.submit "もどる", name: 'back', class: 'back-btn' %>
 <% end %>
+  </div>
+</article>

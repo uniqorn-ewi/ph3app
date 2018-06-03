@@ -1,14 +1,36 @@
-<h1><%= @user.name %>のページ</h1>
-<p>メールアドレス: <%= @user.email %></p>
-<p>アイコン画像:</p>
-<% if @user.avatar.url %>
-  <p><%= image_tag(@user.avatar.url) %></p>
-<% else %>
-  <p><%= image_tag("/assets/no_image.png") %></p>
-<% end %>
+<main class="_8fi2q _2v79o">
+  <div class="_mesn5">
 
-<div class="picture-links">
-  <%= link_to "お気に入りのpictureの一覧", \
-      user_favorite_pictures_path(user_id: @user.id), \
-      class: 'btn-default' %>
-</div>
+    <header class="_mainc ">
+
+      <div class="_b0acm">
+        <div class="_82odm ">
+          <canvas class="_15vpm" width="170" height="170" style="transform: translate(-9px, -9px); position: absolute; top: 0px; left: 0px; width: 170px; height: 170px;"></canvas>
+<span class="_pg23k " style="width: 152px; height: 152px;">
+<% if @user.avatar.url %>
+<%= image_tag(@user.avatar.url, class: "_rewi8", alt: "アイコン画像") %>
+<% else %>
+<%= image_tag("/assets/no_image.png", class: "_rewi8", alt: "アイコン画像") %>
+<% end %>
+</span>
+        </div>
+      </div>
+
+      <section class="_o6mpc">
+        <div class="_ienqf">
+          <h1 class="_rf3jb notranslate" title="<%= @user.name %>"><%= @user.name %></h1>
+        </div>
+<!-- p>アイコン画像:</p -->
+        <p>メールアドレス: <%= @user.email %></p>
+      </section>
+
+    </header>
+
+    <div class="picture-links">
+      <%= link_to "お気に入りのpictureの一覧", \
+          user_favorite_pictures_path(user_id: @user.id), \
+          class: 'btn-default' %>
+    </div>
+
+  </div>
+</main>

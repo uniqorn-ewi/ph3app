@@ -1,4 +1,4 @@
-<h1>ブログ詳細画面</h1>
+<h1>投稿詳細</h1>
 <p>内容: <%= @picture.comment %></p>
 <% if @picture.image.url %>
   <p>画像:</p>
@@ -14,4 +14,4 @@
         method: :post, class: 'btn-primary' %>
   <% end %>
 <% end %>
-<%= link_to "ブログ一覧画面にもどる", pictures_path %>
+<%= link_to "投稿一覧にもどる", pictures_path %>
