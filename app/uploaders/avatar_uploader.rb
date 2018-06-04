@@ -1,8 +1,10 @@
 class AvatarUploader < ImageUploader
-  process :resize_to_limit => [150, 150]
+
+  # Choose what kind of storage to use for this uploader:
+  process resize_to_fit: [150, 150]
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [50, 50]
+    process resize_to_fill: [50, 50]
   end
 end

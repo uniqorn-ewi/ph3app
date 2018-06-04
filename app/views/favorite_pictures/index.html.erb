@@ -22,7 +22,7 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <% if picture.image.url %>
+              <% unless picture.image.file.nil? %>
               <%= image_tag(picture.image.url, class: "img-fluid", alt: "") %>
               <% end %>
             </a>
@@ -33,7 +33,7 @@
                 <li><%= picture.created_at %></li>
                 <li>投稿者: <%= picture.user.name %></li>
                 <li>
-                  <% if picture.user.avatar.thumb.url != nil %>
+                  <% unless picture.user.avatar.thumb.file.nil? %>
                   <%= image_tag(picture.user.avatar.thumb.url) %>
                   <% else %>
                   <%= image_tag("/assets/no_image.png") %>

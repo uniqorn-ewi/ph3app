@@ -7,7 +7,7 @@
         <div class="_82odm ">
           <canvas class="_15vpm" width="170" height="170" style="transform: translate(-9px, -9px); position: absolute; top: 0px; left: 0px; width: 170px; height: 170px;"></canvas>
 <span class="_pg23k " style="width: 152px; height: 152px;">
-<% if @user.avatar.url %>
+<% unless @user.avatar.file.nil? %>
 <%= image_tag(@user.avatar.url, class: "_rewi8", alt: "アイコン画像") %>
 <% else %>
 <%= image_tag("/assets/no_image.png", class: "_rewi8", alt: "アイコン画像") %>
