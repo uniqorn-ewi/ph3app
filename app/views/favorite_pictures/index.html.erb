@@ -22,13 +22,15 @@
                   <i class="fa fa-plus fa-3x"></i>
                 </div>
               </div>
-              <% unless picture.image.file.nil? %>
-              <%= image_tag(picture.image.url, class: "img-fluid", alt: "") %>
+              <% unless picture.image.thumb.file.nil? %>
+              <%= image_tag(picture.image.thumb.url, class: "img-fluid", alt: "") %>
+              <% else %>
+              <%= image_tag("/assets/no_image.png",  class: "img-fluid", alt: "") %>
               <% end %>
             </a>
             
             <div class="portfolio-caption">
-              <p class="text-muted"><%= picture.comment %></p>
+              <p><%= picture.comment %></p>
               <ul class="list-inline">
                 <li><%= picture.created_at %></li>
                 <li>投稿者: <%= picture.user.name %></li>
