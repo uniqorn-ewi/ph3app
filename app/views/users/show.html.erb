@@ -1,36 +1,41 @@
-<main class="_8fi2q _2v79o">
-  <div class="_mesn5">
+<section class="bg-light" id="team">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <!-- h5 class="section-heading text-uppercase">Our Amazing Team</h5 -->
+        <!-- h6 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h6 -->
+      </div>
+    </div>
 
-    <header class="_mainc ">
+    <div class="row">
+      <div class="col-sm-4"></div>
 
-      <div class="_b0acm">
-        <div class="_82odm ">
-          <canvas class="_15vpm" width="170" height="170" style="transform: translate(-9px, -9px); position: absolute; top: 0px; left: 0px; width: 170px; height: 170px;"></canvas>
-<span class="_pg23k " style="width: 152px; height: 152px;">
-<% unless @user.avatar.file.nil? %>
-<%= image_tag(@user.avatar.url, class: "_rewi8", alt: "アイコン画像") %>
+      <div class="col-sm-4">
+        <div class="team-member">
+<% if !@user.avatar.file.nil? && @user.avatar.file.exists? %>
+<%= image_tag(@user.avatar.url, class: "mx-auto rounded-circle", alt: "アイコン画像") %>
 <% else %>
-<%= image_tag("/assets/no_image.png", class: "_rewi8", alt: "アイコン画像") %>
+<%= image_tag("/assets/no_image.png", class: "mx-auto rounded-circle", alt: "アイコン画像") %>
 <% end %>
-</span>
+          <h5><%= @user.name %></h5>
+          <p class="text-muted">メールアドレス: <%= @user.email %></p>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+<%= link_to "お気に入りのpictureの一覧", \
+    user_favorite_pictures_path(user_id: @user.id), \
+    class: 'btn-default' %>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <section class="_o6mpc">
-        <div class="_ienqf">
-          <h1 class="_rf3jb notranslate" title="<%= @user.name %>"><%= @user.name %></h1>
-        </div>
-<!-- p>アイコン画像:</p -->
-        <p>メールアドレス: <%= @user.email %></p>
-      </section>
-
-    </header>
-
-    <div class="picture-links">
-      <%= link_to "お気に入りのpictureの一覧", \
-          user_favorite_pictures_path(user_id: @user.id), \
-          class: 'btn-default' %>
+      <div class="col-sm-4"></div>
     </div>
 
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <!-- p class="large text-muted">Lorem ipsum deaque, corporis ea, alias ut unde.</p -->
+      </div>
+    </div>
   </div>
-</main>
+</section>

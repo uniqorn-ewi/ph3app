@@ -1,4 +1,4 @@
-<div class="portfolio-modal modal fade show">
+<div class="portfolio-modal modal fade show" role="dialog" style="display: block; position: static;">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -9,7 +9,7 @@
 
               <p class="item-intro text-muted"><%= @picture.comment %></p>
 
-              <% if @picture.image.url %>
+              <% if @picture.image.file.exists? %>
               <p><%= image_tag(@picture.image.url, class: "img-fluid d-block mx-auto") %></p>
               <% end %>
 
@@ -34,4 +34,3 @@
     </div>
   </div>
 </div>
-

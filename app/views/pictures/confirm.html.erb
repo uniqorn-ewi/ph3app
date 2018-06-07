@@ -1,29 +1,43 @@
-<header class="_mainc ">
-  <section class="_o6mpc">
-    <div class="_tb97a">
-<h3>以下の内容で投稿</h3>
-    </div>
-  </section>
-</header>
+<div class="portfolio-modal modal fade show" role="dialog" style="display: block; position: static;">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-<article>
-  <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="modal-body">
+<h5>以下の内容で投稿</h5>
+
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= form.hidden_field :comment %>
   <%= form.hidden_field :user_id %>
   <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
-  <p>本文:<%= @picture.comment %></p>
-  <p>画像:</p>
+
+  <p></p>
+  <h6>本文</h6>
+  <p><%= @picture.comment %></p>
+
+  <p></p>
+  <h6>画像</h6>
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
-  <p><%= image_tag(@picture.image.url) if @picture.image.url %></p>
-  <%= form.submit "投稿する", class: 'commit-btn' %>
+  <% if @picture.image.file.exists? %>
+  <%= image_tag(@picture.image.url, class: "img-fluid d-block mx-auto") %>
+  <% end %>
+
+  <%= form.submit '投稿する', data: {dismiss: 'modal'}, class: 'btn btn-primary commit-btn' %>
 <% end %>
 
 <%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
   <%= form.hidden_field :comment %>
   <%= form.hidden_field :user_id %>
   <%= hidden_field_tag :"cache[image]", @picture.image.cache_name %>
-  <%= form.submit "もどる", name: 'back', class: 'back-btn' %>
+  <%= form.submit "もどる", name: 'back', class: 'btn back-btn' %>
 <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
-</article>
+</div>

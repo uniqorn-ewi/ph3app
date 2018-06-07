@@ -1,25 +1,48 @@
-<header class="_mainc ">
-  <section class="_o6mpc">
-    <div class="_tb97a">
-    </div>
-  </section>
-</header>
+<section class="bg-light" id="contact">
+  <div class="container">
 
-<article>
-  <div>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "#{key}") %>
-  <% end %>
-
-  <%= f.label 'メールアドレス' %>
-  <%= f.email_field :email %>
-
-  <%= f.label 'パスワード' %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "ログイン" %>
+    <div class="row">
+<% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "col-lg-12 text-center #{key}") %>
 <% end %>
-  </div>
-</article>
+    </div>
 
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.email_field :email, required: "required", \
+                    placeholder: "メールアドレス", class: 'form-control' %>
+
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= f.password_field :password, required: "required", \
+                    placeholder: "パスワード", class: 'form-control' %>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-12 text-center">
+              <%= f.submit "ログイン", class: 'btn btn-primary btn-xl' %>
+            </div>
+
+          </div>
+<% end %>
+
+      </div>
+    </div>
+
+  </div>
+</section>

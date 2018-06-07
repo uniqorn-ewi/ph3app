@@ -1,31 +1,33 @@
 <%= form_with(model: @picture, local: true, url: choose_new_or_edit) do |form| %>
   <% if @picture.errors.any? %>
     <div id="error_explanation">
-      <h3><%= @picture.errors.count %>件のエラーがあります。</h3>
-      <ul>
+      <p></p>
+      <h6><%= @picture.errors.count %>件のエラーがあります。</h6>
+      <ul class="list-inline">
       <% @picture.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
   <%= form.hidden_field :user_id %>
-  <div class="picture">
-    <%= form.label '本文' %>
-    <% if @picture.errors.messages[:comment].size == 0 %>
-      <br>
-    <% end %>
-    <%= form.text_field :comment %>
-  </div>
-  <div class="picture">
-    <%= form.label '画像' %>
-    <br>
-    <!-- 確認画面から新規作成画面に戻った時に、 -->
-    <!-- アップロードした画像を表示させるための記述 -->
-    <p><%= image_tag(@picture.image.url) if @picture.image.url %></p>
-    <%= form.file_field :image, id: :picture_image %>
-    <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
-    <%= form.hidden_field :image_cache %>
-  </div>
-  <%= form.submit '投稿' %>
+
+  <p></p>
+  <h6>本文</h6>
+  <%= form.text_field :comment %>
+
+  <p></p>
+  <h6>画像</h6>
+  <!-- 確認画面から新規作成画面に戻った時に、 -->
+  <!-- アップロードした画像を表示させるための記述 -->
+  <% if !@picture.image.file.nil? && @picture.image.file.exists? %>
+  <%= image_tag(@picture.image.url, class: "img-fluid d-block mx-auto") %>
+  <% end %>
+  <%= form.file_field :image, id: :picture_image %>
+  <!-- 確認画面から新規作成画面に戻った時に情報を保持するための記述 -->
+  <%= form.hidden_field :image_cache %>
+
+  <p></p>
+  <%= form.submit '投稿', data: {dismiss: 'modal'}, class: 'btn btn-primary' %>
 <% end %>

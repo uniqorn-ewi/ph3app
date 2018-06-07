@@ -16,18 +16,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav">
-    <span class="container">
+<body class="" style="">
+
+  <!-- nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-shrink" id="mainNav" -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="">
+    <div class="container">
+
       <%= link_to "Ph3app", '/', class: 'navbar-brand' %>
 
+      <!-- button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" style="" -->
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
       </button>
 
+      <!-- div class="navbar-collapse collapse" id="navbarResponsive" style="" -->
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
+        <!-- ul class="navbar-nav ml-auto" -->
+        <ul class="navbar-nav text-uppercase ml-auto">
 <% if logged_in? %>
           <li class="nav-item">
             <%= link_to "プロフィール", user_path(current_user.id), class: 'nav-link' %>
@@ -53,15 +59,32 @@
       </div>
 
       <div class="mn-012"></div>
-    </span>
-  </nav>
-  <main class="_8fi2q _2v79o " role="main">
-    <div class="_mesn5">
-<%= yield %>
+
     </div>
+  </nav>
+
+  <!-- main class="main01 main02 " role="main">
+    <div class="main11" -->
+<%= yield %>
+    <!-- /div>
   </main>
   <footer class="ft-00">
     <div class="ft-01 ft-02">&copy; Dive into Code test application</div>
+  </footer -->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+          <span class="copyright">&copy; Dive into Code test application</span>
+        </div>
+        <div class="col-md-4">
+        </div>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
