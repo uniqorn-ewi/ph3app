@@ -7,7 +7,7 @@ class PicturesController < ApplicationController
   end
 
   def index
-    @pictures = Picture.order(:created_at)
+    @pictures = Picture.order(:updated_at)
   end
 
   def new

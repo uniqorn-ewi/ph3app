@@ -3,18 +3,16 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   storage :file
-  process resize_to_fit: [800, 800]
-  process :convert => 'png'
+
+  # Create different versions of your uploaded files:
+  version :thumb do
+    process resize_to_fill: [240, 240]
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
-  # Create different versions of your uploaded files:
-  version :thumb do
-    process resize_to_fill: [220, 220]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -23,9 +21,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
-  def filename
-    super.chomp(File.extname(super)) + '.png' if original_filename.present?
+  def move_to_cache
+    true
+  end
+
+  def move_to_store
+    true
   end
 
   # ファイル名を日付にするとタイミングのせいでサムネイル名がずれる

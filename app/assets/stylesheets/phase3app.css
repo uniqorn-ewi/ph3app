@@ -200,6 +200,20 @@
 }
 
 img.idx-w {
-  width: 350px;
+  width: 100%;
 }
 
+div#error_explanation {
+  color: red;
+}
+
+.commit-btn { /*
+  float: left; */
+}
+.back-btn { /*
+  margin-left: 12px; */
+}
+
+.notice {
+  color: #1400ffab;
+}
