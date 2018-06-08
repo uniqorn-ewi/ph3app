@@ -19,11 +19,7 @@
               <i class="fa fa-plus fa-3x"></i>
             </div>
           </div>
-          <% if picture.image.thumb.file.exists? %>
-          <%= image_tag(picture.image.thumb.url, class: "img-fluid", alt: "") %>
-          <% else %>
-          <%= image_tag("/assets/no_image.png",  class: "img-fluid", alt: "") %>
-          <% end %>
+          <%= image_tag(picture.image.thumb.url, class: "img-fluid idx-w") %>
         </a>
 
         <div class="portfolio-caption">

@@ -9,9 +9,7 @@
 
               <p class="item-intro text-muted"><%= @picture.comment %></p>
 
-              <% if @picture.image.file.exists? %>
               <p><%= image_tag(@picture.image.url, class: "img-fluid d-block mx-auto") %></p>
-              <% end %>
 
               <ul class="list-inline">
                 <% unless @picture.user == current_user %>

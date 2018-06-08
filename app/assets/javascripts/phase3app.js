@@ -13,12 +13,10 @@ $(".mn-012").prepend(
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 50) {
-          $('.nv-021').addClass('nv-022');
-          $('.nv-031').addClass('nv-032');
+          $('#mainNav').addClass('navbar-shrink');
           $('.navbar-brand').css('color','#fff');
         } else {
-          $('.nv-021').removeClass('nv-022');
-          $('.nv-031').removeClass('nv-032');
+          $('#mainNav').removeClass('navbar-shrink');
           $('.navbar-brand').css('color','#212529');
         }
     });
