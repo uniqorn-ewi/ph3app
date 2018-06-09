@@ -63,7 +63,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # Settings for the mailer
-  config.action_mailer.default_url_options = { host: 'dummy.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'fast-earth-84235.herokuapp.com' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
