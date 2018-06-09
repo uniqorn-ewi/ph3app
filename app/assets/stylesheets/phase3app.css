@@ -8,7 +8,6 @@
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding-left: 24px;
   white-space: nowrap
 }
 
