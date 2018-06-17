@@ -1,12 +1,21 @@
 class ImageUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    include CarrierWave::MiniMagick
+    # Choose what kind of storage to use for this uploader:
+    storage :file
+  end
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
+# process :tags => ['picture image']
 
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fill: [240, 240]
+  end
+
+  def public_id
+    return model.id
   end
 
   # Override the directory where uploaded files will be stored.

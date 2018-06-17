@@ -35,7 +35,15 @@ gem 'bcrypt', '3.1.11'
 gem 'dotenv-rails'
 
 gem 'carrierwave', '~> 1.0'
-gem 'mini_magick'
+
+group :development, :test do
+  gem 'mini_magick'
+end
+
+group :production do
+  gem 'cloudinary'
+end
+
 gem 'file_validators'
 
 # Use Capistrano for deployment
