@@ -7,8 +7,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :file
   end
 
-# process :tags => ['picture image']
-
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fill: [240, 240]

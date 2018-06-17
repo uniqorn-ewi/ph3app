@@ -20,9 +20,7 @@
   <p></p>
   <h6>画像</h6>
   <!-- 確認画面でアップロードした画像を表示させるための記述 -->
-  <% if @picture.image.file.exists? %>
-  <%= image_tag(@picture.image.url, class: "img-fluid d-block mx-auto") %>
-  <% end %>
+  <%= image_tag(@picture.image.cache_path, class: "img-fluid d-block mx-auto") %>
 
   <%= form.submit '投稿する', data: {dismiss: 'modal'}, class: 'btn btn-primary commit-btn' %>
 <% end %>
