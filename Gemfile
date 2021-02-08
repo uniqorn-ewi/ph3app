@@ -34,7 +34,7 @@ gem 'bcrypt', '3.1.11'
 
 gem 'dotenv-rails'
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 group :development, :test do
   gem 'mini_magick'
